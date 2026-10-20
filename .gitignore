@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+
+# 本地环境变量（含密钥），只提交 .env.example
+.env
+
+# 评测报告
+evals/reports/
+.ruff_cache/

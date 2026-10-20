@@ -1,0 +1,41 @@
+[project]
+name = "llm-gateway"
+version = "0.1.0"
+description = "配合《大模型应用基础》的综合练习：一个小型模型网关"
+readme = "README.md"
+authors = [
+    { name = "yishwu", email = "yishwu@cisco.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.150.0",
+    "httpx>=0.28.1",
+    "jsonschema>=4.26.0",
+    "python-dotenv>=1.2.4",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[project.scripts]
+llm-gateway = "llm_gateway:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = ["ignore::DeprecationWarning:fastapi.testclient", "ignore:Using `httpx` with `starlette.testclient`"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I"]
